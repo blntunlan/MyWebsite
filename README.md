@@ -47,6 +47,15 @@ git push -u origin main
 2. GitHub > Settings > Pages: Source = GitHub Actions (hazır workflow: `.github/workflows/deploy.yml`).
 3. Main'e her push sonra otomatik build & publish. URL Actions çıktısında.
 
+NOT: Proje repository adı (MyWebsite) olduğu için ilk deploy URL'si:
+https://blntunlan.github.io/MyWebsite/
+`vite.config.ts` içinde CI ortamında base otomatik `/MyWebsite/` olarak ayarlanır. Özel domain (CNAME) eklediğinizde base'i `/` yapabilirsiniz.
+
+Doğrulama:
+* Actions sekmesinde "Deploy Website" workflow yeşil olmalı.
+* "deploy" job çıktısında Page URL görünür.
+* Tarayıcıda açıldığında stiller/yazı tipleri yüklenmiyorsa base ayarı veya cache'i temizleyin (Ctrl+Shift+R).
+
 Özel domain: `dist` içine `CNAME` (örn: `bulentunalan.dev`) ekleyip DNS ayarla.
 
 ## İçerik Düzenleme
