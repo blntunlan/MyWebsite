@@ -34,37 +34,34 @@ npm run build
 ```
 `dist/` klasörü GitHub Pages için deploy edilebilir.
 
-## Deployment (GitHub Pages)
-Varsayılan URL (mevcut repo adıyla):
-https://blntunlan.github.io/MyWebsite/
+## Deployment (GitHub Pages - User Site)
+Hedef URL: https://blntunlan.github.io/
 
-Daha temiz ücretsiz alternatif: Reponun adını `blntunlan.github.io` yaparsan URL kök olur:
-https://blntunlan.github.io/
-Bu durumda `vite.config.ts` içinde base'i kalıcı `/` yapabilirsin (conditional gerekmez).
-
-1. İlk push (yapılmadıysa):
+Repo yeniden adlandırma adımı:
+1. GitHub'da repo Settings > Repository name: `MyWebsite` -> `blntunlan.github.io` (kaydet).
+2. Lokal origin URL'ini güncelle:
 ```powershell
-git init
+git remote set-url origin https://github.com/blntunlan/blntunlan.github.io.git
+```
+3. Bu repo adıyla push edilen `main` branch otomatik olarak kök kullanıcı sitesi olur.
+
+İlk kurulum / push (yapılmadıysa):
+```powershell
 git add .
-git commit -m "feat: initial"
-git branch -M main
-git remote add origin https://github.com/blntunlan/MyWebsite.git
+git commit -m "feat: user site setup" --allow-empty
 git push -u origin main
 ```
-2. Pages otomatik workflow ( `.github/workflows/deploy.yml` ) ile build olur.
-3. Actions > Deploy Website workflow yeşil olunca URL'yi aç.
+Workflow: `.github/workflows/deploy.yml` build edip root'a yayınlar.
 
 Doğrulama:
-* Styles / JS yükleniyorsa base ayarı doğru.
-* 404 asset yok.
-
-Repo adını sonradan `blntunlan.github.io` yaparsan:
-* `vite.config.ts` içindeki conditional base'i kaldırıp `base: '/'` yap.
-* Eski /MyWebsite/ URL'si 404 olur, yeni root URL'yi kullan.
+* Actions > Deploy Website green
+* https://blntunlan.github.io/ açılıyor
+* DevTools Network 404 yok
 
 Sorun giderme:
 * 404 asset: Hard refresh (Ctrl+Shift+R)
-* Boş sayfa: Wrong base; CI log'unda built path'i kontrol et.
+* Sayfa eski tasarım: Cache - yeni commit hash'i Actions logundan doğrula
+* Hiç açılmıyor: Repo rename propagation (1–2 dk) veya workflow hatası
 
 ## İçerik Düzenleme
 `content/` altındaki JSON dosyalarını güncelleyin. Gerekirse tip güvenliği için interface ekleyebilirsiniz.

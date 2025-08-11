@@ -1,13 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// GitHub Project Pages: served at https://<user>.github.io/<repo>/
-// Use repository folder base during CI builds; keep '/' locally.
-const repositoryName = 'MyWebsite';
-const isCI = process.env.GITHUB_ACTIONS === 'true';
-
+// User site repo (blntunlan.github.io) => root deployment
 export default defineConfig({
-  base: isCI ? `/${repositoryName}/` : '/',
+  base: '/',
   plugins: [react()],
   build: {
     outDir: 'dist',
