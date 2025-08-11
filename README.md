@@ -34,8 +34,10 @@ npm run build
 ```
 `dist/` klasörü GitHub Pages için deploy edilebilir.
 
-## Deployment (GitHub Pages)
-1. İlk push:
+## Deployment (GitHub Pages + Custom Domain)
+Hedef URL: https://bulentunalan.dev
+
+1. İlk push (yapılmadıysa):
 ```powershell
 git init
 git add .
@@ -44,19 +46,26 @@ git branch -M main
 git remote add origin https://github.com/blntunlan/MyWebsite.git
 git push -u origin main
 ```
-2. GitHub > Settings > Pages: Source = GitHub Actions (hazır workflow: `.github/workflows/deploy.yml`).
-3. Main'e her push sonra otomatik build & publish. URL Actions çıktısında.
+2. DNS (domain panelinde):
+	A kayıtları (@ root):
+	- 185.199.108.153
+	- 185.199.109.153
+	- 185.199.110.153
+	- 185.199.111.153
+	(Opsiyonel) `www` CNAME -> `blntunlan.github.io`
+3. Repo kökünde ve `public/` klasöründe `CNAME` dosyası (içerik: `bulentunalan.dev`). `public/` içeriği build sırasında `dist/` içine kopyalanır.
+4. GitHub > Settings > Pages: Domain ekle, Enforce HTTPS işaretle.
+5. Actions: "Deploy Website" workflow yeşil => site aktif.
 
-NOT: Proje repository adı (MyWebsite) olduğu için ilk deploy URL'si:
-https://blntunlan.github.io/MyWebsite/
-`vite.config.ts` içinde CI ortamında base otomatik `/MyWebsite/` olarak ayarlanır. Özel domain (CNAME) eklediğinizde base'i `/` yapabilirsiniz.
+Doğrulama checklist:
+* https://bulentunalan.dev açılıyor.
+* HTTPS sertifika (Let’s Encrypt) aktif (birkaç dk sürebilir).
+* Konsolda 404 asset yok.
 
-Doğrulama:
-* Actions sekmesinde "Deploy Website" workflow yeşil olmalı.
-* "deploy" job çıktısında Page URL görünür.
-* Tarayıcıda açıldığında stiller/yazı tipleri yüklenmiyorsa base ayarı veya cache'i temizleyin (Ctrl+Shift+R).
-
-Özel domain: `dist` içine `CNAME` (örn: `bulentunalan.dev`) ekleyip DNS ayarla.
+Sorun giderme:
+* 404 asset / bozuk stil: Ctrl+Shift+R (hard refresh) veya başka tarayıcı.
+* Domain yönlenmiyor: `nslookup bulentunalan.dev` IP'ler yukarıdaki değilse propagate bekle (<1h genelde, max 24h).
+* HTTPS yok: Enforce HTTPS toggle off/on yapıp 10 dk bekle.
 
 ## İçerik Düzenleme
 `content/` altındaki JSON dosyalarını güncelleyin. Gerekirse tip güvenliği için interface ekleyebilirsiniz.
