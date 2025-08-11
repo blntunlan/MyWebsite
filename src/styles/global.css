@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+
+body {
+  font-feature-settings: "liga" 1, "kern" 1;
+  background-image: radial-gradient(circle at 30% 20%, rgba(0,0,0,0.04), transparent 60%),
+    linear-gradient(120deg, rgba(0,0,0,0.02), transparent 40%);
+}
+
+.dark body, body.dark {
+  background-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.07), transparent 60%),
+    linear-gradient(120deg, rgba(255,255,255,0.04), transparent 40%);
+}
+
+/* Scrollbar minimal */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 20px; }
+.dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); }
+
+/* Utility for line clamp (fallback if plugin not used) */
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }

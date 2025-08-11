@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "procedural-world-streaming",
+    "title": "Procedural World Streaming",
+    "summary": "Open world prototype leveraging Unreal Engine 5 World Partition + Runtime Virtual Texturing for seamless biome streaming and memory‑efficient foliage.",
+    "tags": ["UE5", "C++", "World Partition", "Optimization"],
+    "coverPlaceholder": "World",
+    "link": "#"
+  },
+  {
+    "slug": "sequencer-toolkit",
+    "title": "Sequencer Toolkit",
+    "summary": "Custom Sequencer extensions: shot labeling, camera rig presets, automated render queue pipelines for cinematic batches.",
+    "tags": ["Sequencer", "Tools", "Blueprint", "C++"],
+    "coverPlaceholder": "Toolkit",
+    "link": "#"
+  },
+  {
+    "slug": "networked-ability-system",
+    "title": "Networked Ability System",
+    "summary": "Gameplay Ability System driven combat layer with predictive client abilities, GAS attribute replication tuning and profiling guided optimizations.",
+    "tags": ["GAS", "Networking", "Replication", "Profiling"],
+    "coverPlaceholder": "GAS",
+    "link": "#"
+  }
+]

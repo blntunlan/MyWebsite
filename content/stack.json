@@ -1,0 +1,10 @@
+[
+  { "name": "Unreal Engine 5", "level": "Advanced" },
+  { "name": "C++", "level": "Advanced" },
+  { "name": "Blueprint", "level": "Advanced" },
+  { "name": "Gameplay Ability System", "level": "Intermediate" },
+  { "name": "Optimization / Profiling", "level": "Advanced" },
+  { "name": "Shader & Materials", "level": "Intermediate" },
+  { "name": "Python Tooling", "level": "Intermediate" },
+  { "name": "Version Control (Git)", "level": "Advanced" }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "company": "Studio X",
+    "role": "Senior Unreal Developer",
+    "start": "2023-03",
+    "end": "2025-07",
+    "summary": "Led performance critical rendering & streaming optimizations (Nanite, Lumen), refactored replication layers and built internal debug tooling for designers."
+  },
+  {
+    "company": "Indie Collective",
+    "role": "Gameplay Programmer",
+    "start": "2021-06",
+    "end": "2023-02",
+    "summary": "Implemented GAS based combat abilities, AI perception tuning, build automation scripts and profiling passes to reduce frame time stalls."
+  }
+]
