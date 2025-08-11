@@ -34,8 +34,13 @@ npm run build
 ```
 `dist/` klasörü GitHub Pages için deploy edilebilir.
 
-## Deployment (GitHub Pages + Custom Domain)
-Hedef URL: https://bulentunalan.dev
+## Deployment (GitHub Pages)
+Varsayılan URL (mevcut repo adıyla):
+https://blntunlan.github.io/MyWebsite/
+
+Daha temiz ücretsiz alternatif: Reponun adını `blntunlan.github.io` yaparsan URL kök olur:
+https://blntunlan.github.io/
+Bu durumda `vite.config.ts` içinde base'i kalıcı `/` yapabilirsin (conditional gerekmez).
 
 1. İlk push (yapılmadıysa):
 ```powershell
@@ -46,26 +51,20 @@ git branch -M main
 git remote add origin https://github.com/blntunlan/MyWebsite.git
 git push -u origin main
 ```
-2. DNS (domain panelinde):
-	A kayıtları (@ root):
-	- 185.199.108.153
-	- 185.199.109.153
-	- 185.199.110.153
-	- 185.199.111.153
-	(Opsiyonel) `www` CNAME -> `blntunlan.github.io`
-3. Repo kökünde ve `public/` klasöründe `CNAME` dosyası (içerik: `bulentunalan.dev`). `public/` içeriği build sırasında `dist/` içine kopyalanır.
-4. GitHub > Settings > Pages: Domain ekle, Enforce HTTPS işaretle.
-5. Actions: "Deploy Website" workflow yeşil => site aktif.
+2. Pages otomatik workflow ( `.github/workflows/deploy.yml` ) ile build olur.
+3. Actions > Deploy Website workflow yeşil olunca URL'yi aç.
 
-Doğrulama checklist:
-* https://bulentunalan.dev açılıyor.
-* HTTPS sertifika (Let’s Encrypt) aktif (birkaç dk sürebilir).
-* Konsolda 404 asset yok.
+Doğrulama:
+* Styles / JS yükleniyorsa base ayarı doğru.
+* 404 asset yok.
+
+Repo adını sonradan `blntunlan.github.io` yaparsan:
+* `vite.config.ts` içindeki conditional base'i kaldırıp `base: '/'` yap.
+* Eski /MyWebsite/ URL'si 404 olur, yeni root URL'yi kullan.
 
 Sorun giderme:
-* 404 asset / bozuk stil: Ctrl+Shift+R (hard refresh) veya başka tarayıcı.
-* Domain yönlenmiyor: `nslookup bulentunalan.dev` IP'ler yukarıdaki değilse propagate bekle (<1h genelde, max 24h).
-* HTTPS yok: Enforce HTTPS toggle off/on yapıp 10 dk bekle.
+* 404 asset: Hard refresh (Ctrl+Shift+R)
+* Boş sayfa: Wrong base; CI log'unda built path'i kontrol et.
 
 ## İçerik Düzenleme
 `content/` altındaki JSON dosyalarını güncelleyin. Gerekirse tip güvenliği için interface ekleyebilirsiniz.
