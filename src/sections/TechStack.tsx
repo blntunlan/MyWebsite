@@ -1,9 +1,10 @@
 import React from 'react';
 import stack from '../../content/stack.json';
-import { t, detectInitialLang, type Lang } from '../i18n';
+import { t } from '../i18n';
+import { useLang } from '../context/LangContext';
 
 export const TechStack: React.FC = () => {
-  const [lang] = React.useState<Lang>(() => detectInitialLang());
+  const { lang } = useLang();
   return (
     <section id="tech" className="py-24 border-t border-black/5 dark:border-white/5">
       <div className="max-w-6xl mx-auto px-6">

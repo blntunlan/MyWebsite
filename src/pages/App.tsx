@@ -6,10 +6,11 @@ import { TechStack } from '../sections/TechStack';
 import { Contact } from '../sections/Contact';
 import { SiteFooter } from '../sections/Footer';
 import { Navigation } from '../components/Navigation';
+import { LangProvider } from '../context/LangContext';
 
 export const App: React.FC = () => {
   return (
-    <>
+    <LangProvider>
       <Navigation />
       <main className="relative">
         <Hero />
@@ -19,6 +20,6 @@ export const App: React.FC = () => {
         <Contact />
       </main>
       <SiteFooter />
-    </>
+    </LangProvider>
   );
 };

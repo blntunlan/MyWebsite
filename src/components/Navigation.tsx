@@ -1,9 +1,10 @@
 import React from 'react';
 import { ThemeToggle } from './ThemeToggle';
-import { t, detectInitialLang, type Lang } from '../i18n';
+import { t, type Lang } from '../i18n';
+import { useLang } from '../context/LangContext';
 
 export const Navigation: React.FC = () => {
-  const [lang, setLang] = React.useState<Lang>(() => detectInitialLang());
+  const { lang, setLang } = useLang();
   const links = [
     { href: '#showreel', label: t(lang, 'nav_showreel') },
     { href: '#projects', label: t(lang, 'nav_projects') },
@@ -14,8 +15,6 @@ export const Navigation: React.FC = () => {
   function toggleLang() {
     const next: Lang = lang === 'tr' ? 'en' : 'tr';
     setLang(next);
-    localStorage.setItem('lang', next);
-    document.documentElement.setAttribute('lang', next);
   }
 
   return (

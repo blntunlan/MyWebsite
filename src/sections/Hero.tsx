@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { t, detectInitialLang, type Lang } from '../i18n';
+import { t } from '../i18n';
+import { useLang } from '../context/LangContext';
 
 export const Hero: React.FC = () => {
-  const [lang] = React.useState<Lang>(() => detectInitialLang());
+  const { lang } = useLang();
   return (
     <section className="pt-40 pb-28" id="top">
       <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-16 items-center">

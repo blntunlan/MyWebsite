@@ -1,9 +1,10 @@
 import React from 'react';
 import projects from '../../content/projects.json';
-import { t, detectInitialLang, type Lang } from '../i18n';
+import { t } from '../i18n';
+import { useLang } from '../context/LangContext';
 
 export const Projects: React.FC = () => {
-  const [lang] = React.useState<Lang>(() => detectInitialLang());
+  const { lang } = useLang();
   return (
     <section id="projects" className="py-28">
       <div className="max-w-6xl mx-auto px-6">
