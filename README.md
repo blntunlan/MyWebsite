@@ -34,34 +34,30 @@ npm run build
 ```
 `dist/` klasörü GitHub Pages için deploy edilebilir.
 
-## Deployment (GitHub Pages - User Site)
-Hedef URL: https://blntunlan.github.io/
+## Deployment (GitHub Pages - Project Site)
+URL: https://blntunlan.github.io/MyWebsite/
 
-Repo yeniden adlandırma adımı:
-1. GitHub'da repo Settings > Repository name: `MyWebsite` -> `blntunlan.github.io` (kaydet).
-2. Lokal origin URL'ini güncelle:
-```powershell
-git remote set-url origin https://github.com/blntunlan/blntunlan.github.io.git
-```
-3. Bu repo adıyla push edilen `main` branch otomatik olarak kök kullanıcı sitesi olur.
+CI sırasında `vite.config.ts` base otomatik `/MyWebsite/` olur; lokalde `/` kalır.
 
-İlk kurulum / push (yapılmadıysa):
+İlk push (yapılmadıysa):
 ```powershell
+git init
 git add .
-git commit -m "feat: user site setup" --allow-empty
+git commit -m "feat: initial"
+git branch -M main
+git remote add origin https://github.com/blntunlan/MyWebsite.git
 git push -u origin main
 ```
-Workflow: `.github/workflows/deploy.yml` build edip root'a yayınlar.
+Her main push sonrası Actions workflow (`Deploy Website`) build & publish.
 
 Doğrulama:
-* Actions > Deploy Website green
-* https://blntunlan.github.io/ açılıyor
-* DevTools Network 404 yok
+* Actions workflow yeşil
+* URL açılıyor (CSS/JS 404 yok)
 
 Sorun giderme:
-* 404 asset: Hard refresh (Ctrl+Shift+R)
-* Sayfa eski tasarım: Cache - yeni commit hash'i Actions logundan doğrula
-* Hiç açılmıyor: Repo rename propagation (1–2 dk) veya workflow hatası
+* 404 asset: base yanlış -> CI log build output path kontrol et
+* Değişiklik görünmüyor: Hard refresh (Ctrl+Shift+R) veya farklı tarayıcı
+* Workflow kırmızı: Log içinde hata satırını incele
 
 ## İçerik Düzenleme
 `content/` altındaki JSON dosyalarını güncelleyin. Gerekirse tip güvenliği için interface ekleyebilirsiniz.
