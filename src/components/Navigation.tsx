@@ -9,6 +9,7 @@ export const Navigation: React.FC = () => {
     { href: '#showreel', label: t(lang, 'nav_showreel') },
     { href: '#projects', label: t(lang, 'nav_projects') },
     { href: '#tech', label: t(lang, 'nav_tech') },
+    { href: '#expertise', label: t(lang, 'expertise_title') },
     { href: '#contact', label: t(lang, 'nav_contact') }
   ];
 
@@ -29,6 +30,7 @@ export const Navigation: React.FC = () => {
           ))}
         </nav>
         <div className="flex items-center gap-2 md:gap-4">
+          <a href="/resume.pdf" target="_blank" className="hidden md:inline rounded-full px-4 py-1.5 text-xs font-medium bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-colors">{t(lang,'nav_resume')}</a>
           <button onClick={toggleLang} className="rounded-full px-3 py-1.5 text-xs font-medium bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-colors">
             {lang === 'tr' ? 'EN' : 'TR'}
           </button>

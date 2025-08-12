@@ -6,6 +6,8 @@ import { TechStack } from '../sections/TechStack';
 import { Contact } from '../sections/Contact';
 import { SiteFooter } from '../sections/Footer';
 import { Navigation } from '../components/Navigation';
+import { Expertise } from '../sections/Expertise';
+import { HireFloatingCTA } from '../components/HireFloatingCTA';
 import { LangProvider } from '../context/LangContext';
 
 export const App: React.FC = () => {
@@ -17,8 +19,10 @@ export const App: React.FC = () => {
         <Showreel />
         <Projects />
         <TechStack />
+        <Expertise />
         <Contact />
       </main>
+      <HireFloatingCTA />
       <SiteFooter />
     </LangProvider>
   );
