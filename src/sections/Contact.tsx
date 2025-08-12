@@ -11,7 +11,7 @@ export const Contact: React.FC = () => {
         <p className="text-sm text-black/60 dark:text-white/60 max-w-lg mx-auto">{t(lang,'contact_sub')}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="mailto:bulentunalan97@icloud.com" className="px-6 py-3 rounded-xl bg-black text-white dark:bg-white dark:text-black text-sm font-medium shadow-soft">{t(lang,'contact_email')}</a>
-          <a href="https://www.linkedin.com" target="_blank" className="px-6 py-3 rounded-xl bg-black/5 dark:bg-white/10 text-sm font-medium">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/bülent-ünalan" target="_blank" rel="noopener" className="px-6 py-3 rounded-xl bg-black/5 dark:bg-white/10 text-sm font-medium">LinkedIn</a>
           <a href="https://github.com/blntunlan" target="_blank" className="px-6 py-3 rounded-xl bg-black/5 dark:bg-white/10 text-sm font-medium">GitHub</a>
         </div>
       </div>
