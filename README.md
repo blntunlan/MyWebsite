@@ -1,45 +1,49 @@
 # Unreal Engine Developer Portfolio
 
-Apple benzeri sade, tipografi odaklı bir Unreal Engine oyun geliştirici portfolyo sitesi.
+Clean, typography‑focused portfolio for an Unreal Engine (UE5) gameplay / tools / systems developer with an "Apple‑like" minimal aesthetic.
 
-## Özellik Hedefleri
-* Hero + Showreel
-* Proje kartları (JSON içerik)
-* Teknoloji & araç listesi
-* Deneyim timeline
-* İletişim + sosyal linkler
-* Dark / light tema (localStorage)
-* Statik build (GitHub Pages uyumlu)
+## Current Features
+* Hero + Showreel (lazy loaded videos scaffold)
+* Project cards (JSON driven)
+* Tech / Tool stack section
+* Expertise highlights (GAS, Networking, Performance)
+* Contact section + social links (Mail, LinkedIn, GitHub)
+* Floating Contact CTA
+* Dark / Light theme (persisted via localStorage)
+* Bilingual i18n (EN default, TR optional) with instant reactive switch
+* SEO meta (OG/Twitter, canonical, JSON‑LD Person schema)
+* Sitemap & robots.txt
+* Lighthouse CI workflow
+* GitHub Pages friendly static build
 
-## Ortam
-Node.js 20 LTS önerilir. `.nvmrc` dosyası proje kökünde mevcut.
-Windows için nvm (https://github.com/coreybutler/nvm-windows) kurduktan sonra:
+## Environment
+Node.js 20 LTS recommended. `.nvmrc` present at repo root.
+Windows (nvm-windows):
 ```powershell
 nvm install 20
 nvm use 20
 ```
-Alternatif: https://nodejs.org üzerinden LTS installer.
+Alternative: download the LTS installer from https://nodejs.org
 
-## Kurulum
+## Development
 ```powershell
 npm install
 npm run dev
 ```
-
-Tarayıcı: http://localhost:5173
+Open: http://localhost:5173
 
 ## Build
 ```powershell
 npm run build
 ```
-`dist/` klasörü GitHub Pages için deploy edilebilir.
+Result goes to `dist/` (deployable to GitHub Pages).
 
-## Deployment (GitHub Pages - Project Site)
-URL: https://blntunlan.github.io/MyWebsite/
+## Deployment (GitHub Pages Project Site)
+Public URL: https://blntunlan.github.io/MyWebsite/
 
-CI sırasında `vite.config.ts` base otomatik `/MyWebsite/` olur; lokalde `/` kalır.
+`vite.config.ts` sets `base` to `/MyWebsite/` only in CI so local dev still uses `/`.
 
-İlk push (yapılmadıysa):
+Initial push (if repo not yet initialized):
 ```powershell
 git init
 git add .
@@ -48,26 +52,27 @@ git branch -M main
 git remote add origin https://github.com/blntunlan/MyWebsite.git
 git push -u origin main
 ```
-Her main push sonrası Actions workflow (`Deploy Website`) build & publish.
+After each push to `main`, the "Deploy Website" GitHub Action builds and publishes.
 
-Doğrulama:
-* Actions workflow yeşil
-* URL açılıyor (CSS/JS 404 yok)
+Verification checklist:
+* Deploy workflow green
+* Page loads without 404s for CSS/JS assets
 
-Sorun giderme:
-* 404 asset: base yanlış -> CI log build output path kontrol et
-* Değişiklik görünmüyor: Hard refresh (Ctrl+Shift+R) veya farklı tarayıcı
-* Workflow kırmızı: Log içinde hata satırını incele
+Troubleshooting:
+* 404 assets: check `base` path in build logs
+* Changes not showing: hard refresh (Ctrl+Shift+R) or different browser / clear cache
+* Failed workflow: inspect logs for the first error stack
 
-## İçerik Düzenleme
-`content/` altındaki JSON dosyalarını güncelleyin. Gerekirse tip güvenliği için interface ekleyebilirsiniz.
+## Content Editing
+Update JSON files under `content/`. Extend or add fields as needed; you may add TypeScript interfaces for stronger typing of imported JSON.
 
-## Yol Haritası
-* Blog / Yazılar (MDX)
-* Çoklu dil (i18n) – (en varsayılan, tr opsiyon)
-* Projeler için detay sayfaları
-* Lighthouse optimizasyonu
-* Otomatik video poster (FFmpeg script)
+## Roadmap / Next Ideas
+* Project detail pages (modal or route)
+* MDX blog / technical articles
+* Analytics (Plausible or Umami)
+* Real video assets + generated poster thumbnails (FFmpeg helper script)
+* Additional structured data (Project schema per item)
+* Performance: font subsetting & image optimization
 
-## Lisans
-Kişisel kullanım.
+## License
+Personal use.
